@@ -4,60 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#266EF2" />
-    <title>Quiz | Teste seus conhecimentos</title>
+    <title>Qual arquétipo trava o seu negócio hoje? | Sales Hunter</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="app-shell">
-      <header class="topbar">
-        <a class="brand" href="index.html" aria-label="Quiz, início">
-          <span class="brand-mark" aria-hidden="true">?</span>
-          <span>quiz<span class="brand-dot">.</span></span>
-        </a>
-        <div class="topbar-meta">
-          <span class="eyebrow">DESAFIO RÁPIDO</span>
-          <span class="question-count" id="question-count">01 / 05</span>
+    <main class="app">
+      <div class="brand">SALES HUNTER <span>·</span> DIAGNÓSTICO DE ARQUÉTIPOS</div>
+      <section class="panel" aria-live="polite">
+        <div data-view="intro" class="view active">
+          <span class="eyebrow">DIAGNÓSTICO RÁPIDO</span>
+          <h1>Qual arquétipo trava o seu negócio hoje?</h1>
+          <p>8 perguntas rápidas sobre como o seu prospect reage nas calls, e-mails e objeções. No final, você descobre qual dos 9 arquétipos filosóficos mais aparece nos seus negócios travados e recebe o script de abertura e fechamento para usar com ele.</p>
+          <button class="primary-button" id="start-button" type="button">Começar diagnóstico <span aria-hidden="true">→</span></button>
         </div>
-      </header>
-
-      <section class="quiz-layout" aria-live="polite">
-        <aside class="intro-panel">
-          <div class="intro-copy">
-            <span class="kicker">Conhecimento em movimento</span>
-            <h1>Quanto você<br /><em>realmente</em> sabe?</h1>
-            <p>Uma pergunta por vez. Respire fundo, escolha sua resposta e descubra até onde vai sua curiosidade.</p>
-          </div>
-          <div class="score-note">
-            <span class="score-icon" aria-hidden="true">✦</span>
-            <span><strong>Sem pressa.</strong><br />Você tem todo o tempo do mundo.</span>
-          </div>
-        </aside>
-
-        <section class="quiz-card" id="quiz-card">
-          <div class="progress-row">
-            <span>Progresso</span>
-            <strong id="progress-label">20% concluído</strong>
-          </div>
-          <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
-
-          <div class="question-block">
-            <span class="question-tag" id="question-tag">PERGUNTA 01</span>
-            <h2 id="question-text">Qual é o maior planeta do nosso sistema solar?</h2>
-            <div class="answers" id="answers"></div>
-          </div>
-
-          <div class="card-footer">
-            <span class="hint" id="hint">Selecione uma alternativa para continuar</span>
-            <button class="next-button" id="next-button" type="button" disabled>
-              <span id="next-label">Próxima</span>
-              <span aria-hidden="true">→</span>
-            </button>
-          </div>
-        </section>
+        <div data-view="quiz" class="view">
+          <div class="progress-row"><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label">1 / 8</span></div>
+          <span class="eyebrow" id="question-number">PERGUNTA 01</span>
+          <h2 id="question-text"></h2>
+          <div class="options" id="options-list"></div>
+        </div>
+        <div data-view="result" class="view">
+          <span class="eyebrow">SEU ARQUÉTIPO PREDOMINANTE</span>
+          <h2 class="result-name" id="result-name"></h2>
+          <p class="result-epithet" id="result-epithet"></p>
+          <div class="result-block"><strong>SINAL</strong><p id="result-signal"></p></div>
+          <div class="result-block"><strong>ABERTURA</strong><p id="result-open"></p></div>
+          <div class="result-block"><strong>SCRIPT DE FECHAMENTO</strong><p class="script-box" id="result-script"></p></div>
+          <div class="runner-up" id="runner-up"></div>
+          <div class="button-row"><button class="secondary-button" id="restart-button" type="button">Refazer</button><button class="primary-button" id="copy-button" type="button">Copiar resultado</button></div>
+        </div>
       </section>
+      <div class="footer-note">Baseado no material “Piloto Sales Hunter” · use com o time em 1on1s ou como ritual mensal</div>
     </main>
     <script src="script.js"></script>
   </body>

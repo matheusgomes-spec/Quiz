@@ -1,78 +1,30 @@
+const archetypes = {
+  socrates: ["Sócrates", "O Mestre da Descoberta", "Responde suas perguntas com outras perguntas; busca diálogo, não aceita discurso pronto.", "Use perguntas abertas qualificadoras. Nunca dispare features de cara.", "Quando você analisa seu volume de leads atual comparado ao custo de aquisição (CAC), qual é o impacto financeiro real se você mantiver essa mesma eficiência nos próximos 2 trimestres?"],
+  platao: ["Platão", "O Vendedor de Valor e Visão", "Fala de propósito, visão de mercado e posicionamento de marca antes de falar de operação.", "Conecte o contato com a missão corporativa e o impacto que a solução gera no mercado dele.", "Vi que a meta de sustentabilidade de vocês para este ano é agressiva. Nossa solução ajuda a materializar essa visão estratégica com conformidade."],
+  aristoteles: ["Aristóteles", "O Cientista do Funil de Vendas", "Vocês têm dados disso? Quais os números do ROI? Quais concorrentes usam?", "Apresente benchmarks específicos de mercado e estatísticas de sucesso homólogas.", "Apoiamos 14 empresas concorrentes do seu setor a reduzir o custo operacional de TI em 24% no primeiro ano operacional."],
+  epicuro: ["Epicuro", "O Facilitador do Fechamento sem Atrito", "Isso vai dar dor de cabeça pro meu time? O processo é complexo?", "Proponha uma conversa rápida e de baixa pressão. Gatilhos de escassez o afastam.", "Será um bate-papo curto de 10 minutos, sem nenhum compromisso ou pressão comercial."],
+  descartes: ["Descartes", "O Engenheiro de Processos e Playbooks", "Quais as etapas técnicas da entrega? Como funciona o SLA? Qual o fluxograma?", "Responda cada dúvida com embasamento lógico. Separe variáveis complexas em partes menores.", "Para entendermos a sinergia técnica, dividimos nosso processo em três fases claras: 1) Diagnóstico, 2) Integração, 3) Rampagem."],
+  kant: ["Kant", "O Guardião do Compliance e Governança", "Cobra transparência, contratos e critérios claros; desconfia de condição especial só hoje.", "Nunca prometa o que o produto não entrega. Evite descontos por fora.", "Gostaria de agendar uma reunião técnica para apresentar exatamente o escopo, com total transparência."],
+  schopenhauer: ["Schopenhauer", "O Desarmador de Objeções Realista", "Todas as soluções prometem e falham. Ceticismo com discursos motivacionais exagerados.", "Desmistifique falsas soluções milagrosas dos concorrentes. Seja franco.", "Sendo realista, nosso software exige dedicação da sua equipe, mas resolve X de verdade."],
+  marx: ["Karl Marx", "O Vendedor Centrado no Sucesso do Usuário", "Preocupa-se com a rotina do time de ponta; rejeita ferramentas de controle e vigilância excessiva.", "Mostre como a ferramenta facilita o trabalho do time, não só o controle da diretoria.", "Desenhamos a ferramenta para que seu time economize 3 horas diárias de trabalho manual repetitivo."],
+  nietzsche: ["Nietzsche", "O Vendedor Desafiador (Challenger Sale)", "Queremos nos destacar no mercado. Busca o que há de disruptivo e inovador.", "Confronte a inércia dele frente aos movimentos da concorrência direta.", "A taxa média de conversão do seu mercado subiu para 18%. Manter seu modelo atual pode colocar sua participação em risco."]
+};
 const questions = [
-  { text: "Qual é o maior planeta do nosso sistema solar?", answers: ["Terra", "Júpiter", "Saturno", "Netuno"], correct: 1 },
-  { text: "Qual linguagem é conhecida por sua cobra no logotipo?", answers: ["Python", "Ruby", "Swift", "Kotlin"], correct: 0 },
-  { text: "Quantos lados tem um hexágono?", answers: ["Cinco", "Seis", "Sete", "Oito"], correct: 1 },
-  { text: "Qual é o maior oceano da Terra?", answers: ["Atlântico", "Índico", "Pacífico", "Ártico"], correct: 2 },
-  { text: "Quem pintou a Mona Lisa?", answers: ["Van Gogh", "Michelangelo", "Leonardo da Vinci", "Picasso"], correct: 2 }
+  ["Como o prospect reage quando você tenta agendar a próxima etapa rapidamente?", [["Faz mais perguntas antes de aceitar, quer entender o raciocínio por trás", "socrates"], ["Pede para ver os dados e cases primeiro", "aristoteles"], ["Recua e pede mais tempo, parece desconfortável com a pressão", "epicuro"], ["Aceita, mas quer saber exatamente os próximos passos técnicos", "descartes"]]],
+  ["O que mais trava a negociação na reta final?", [["Pede mais aprovação jurídica ou de compliance", "kant"], ["Quer garantias de que não é mais uma promessa que falha", "schopenhauer"], ["Questiona se a equipe dele vai sofrer com a implantação", "marx"], ["Compara com o que a concorrência está fazendo de mais inovador", "nietzsche"]]],
+  ["Qual frase você mais escuta logo no início da conversa?", [["Vocês têm dados disso?", "aristoteles"], ["Qual o fluxograma técnico disso tudo?", "descartes"], ["Por que vocês fazem o que fazem?", "platao"], ["Isso vai dar dor de cabeça pro meu time?", "epicuro"]]],
+  ["Como o decisor reage a um discurso de urgência (oferta só até sexta)?", [["Se assusta e recua na hora", "epicuro"], ["Ignora e continua fazendo perguntas próprias", "socrates"], ["Desconfia e questiona a ética da oferta", "kant"], ["Fica cético, acha que é só marketing", "schopenhauer"]]],
+  ["O que o prospect valoriza mais ao falar do produto?", [["O impacto na missão e na visão da empresa", "platao"], ["A facilidade para o time que vai usar no dia a dia", "marx"], ["Estar à frente da concorrência", "nietzsche"], ["Provas concretas de resultado (cases, ROI)", "aristoteles"]]],
+  ["Quando você propõe um passo a passo de implantação, ele...", [["Quer cada etapa detalhada e documentada", "descartes"], ["Pergunta como isso afeta a carga do time", "epicuro"], ["Questiona se está alinhado às políticas internas", "kant"], ["Prefere confiar no seu raciocínio a pedir documentação", "socrates"]]],
+  ["Como ele reage quando você é honesto sobre uma limitação do produto?", [["Relaxa e confia mais em você", "schopenhauer"], ["Aprecia, mas quer dados de como isso foi resolvido em outros clientes", "aristoteles"], ["Pergunta se isso viola algum compromisso contratual", "kant"], ["Pergunta se a concorrência resolve isso melhor", "nietzsche"]]],
+  ["O que faria ele fechar negócio mais rápido?", [["Você desafiar a forma como ele faz as coisas hoje", "nietzsche"], ["Você mostrar como a vida do time dele fica mais fácil", "marx"], ["Você conectar a solução com o propósito maior da empresa", "platao"], ["Você deixar claro que não vai pressioná-lo em nada", "epicuro"]]]
 ];
-
-let currentQuestion = 0;
-let score = 0;
-let selectedAnswer = null;
-
-const questionText = document.querySelector("#question-text");
-const questionTag = document.querySelector("#question-tag");
-const answersContainer = document.querySelector("#answers");
-const nextButton = document.querySelector("#next-button");
-const nextLabel = document.querySelector("#next-label");
-const hint = document.querySelector("#hint");
-
-function renderQuestion() {
-  const question = questions[currentQuestion];
-  const progress = Math.round(((currentQuestion + 1) / questions.length) * 100);
-  selectedAnswer = null;
-  questionText.textContent = question.text;
-  questionTag.textContent = `PERGUNTA ${String(currentQuestion + 1).padStart(2, "0")}`;
-  document.querySelector("#question-count").textContent = `${String(currentQuestion + 1).padStart(2, "0")} / ${String(questions.length).padStart(2, "0")}`;
-  document.querySelector("#progress-label").textContent = `${progress}% concluído`;
-  document.querySelector("#progress-bar").style.width = `${progress}%`;
-  nextButton.disabled = true;
-  nextLabel.textContent = currentQuestion === questions.length - 1 ? "Finalizar" : "Próxima";
-  hint.textContent = "Selecione uma alternativa para continuar";
-  answersContainer.innerHTML = "";
-
-  question.answers.forEach((answer, index) => {
-    const button = document.createElement("button");
-    button.className = "answer";
-    button.type = "button";
-    button.innerHTML = `<span class="answer-letter">${String.fromCharCode(65 + index)}</span><span class="answer-text">${answer}</span>`;
-    button.addEventListener("click", () => selectAnswer(index));
-    answersContainer.appendChild(button);
-  });
-}
-
-function selectAnswer(index) {
-  if (selectedAnswer !== null) return;
-  selectedAnswer = index;
-  const question = questions[currentQuestion];
-  const answerButtons = [...answersContainer.children];
-  answerButtons[index].classList.add("selected");
-  if (index === question.correct) {
-    score += 1;
-    hint.textContent = "Boa! Resposta correta.";
-  } else {
-    answerButtons[index].classList.add("wrong");
-    answerButtons[question.correct].classList.add("correct");
-    hint.textContent = `A resposta era ${question.answers[question.correct]}.`;
-  }
-  answerButtons.forEach((button) => { button.disabled = true; });
-  nextButton.disabled = false;
-}
-
-function showResult() {
-  document.querySelector("#quiz-card").innerHTML = `
-    <div class="result-screen">
-      <span class="question-tag">QUIZ FINALIZADO</span>
-      <h2>Você fez<br /><em>${score} de ${questions.length}</em> pontos.</h2>
-      <p>${score === questions.length ? "Impressionante. Você acertou tudo." : "Cada resposta é uma nova chance de aprender algo."}</p>
-      <button class="next-button" id="restart-button" type="button">Tentar novamente <span aria-hidden="true">↗</span></button>
-    </div>`;
-  document.querySelector("#restart-button").addEventListener("click", () => window.location.reload());
-}
-
-nextButton.addEventListener("click", () => {
-  if (currentQuestion === questions.length - 1) showResult();
-  else { currentQuestion += 1; renderQuestion(); }
-});
-
-renderQuestion();
+const views = Object.fromEntries([...document.querySelectorAll("[data-view]")].map((view) => [view.dataset.view, view]));
+let current = 0; let scores = {};
+const show = (name) => Object.values(views).forEach((view) => view.classList.toggle("active", view === views[name]));
+function renderQuestion() { const [text, options] = questions[current]; document.querySelector("#question-text").textContent = text; document.querySelector("#question-number").textContent = `PERGUNTA ${String(current + 1).padStart(2, "0")}`; document.querySelector("#progress-label").textContent = `${current + 1} / ${questions.length}`; document.querySelector("#progress-fill").style.width = `${current / questions.length * 100}%`; const list = document.querySelector("#options-list"); list.innerHTML = ""; options.forEach(([label, key]) => { const button = document.createElement("button"); button.className = "option"; button.type = "button"; button.textContent = label; button.onclick = () => answer(key); list.appendChild(button); }); }
+function answer(key) { scores[key] += 1; current += 1; if (current < questions.length) renderQuestion(); else { document.querySelector("#progress-fill").style.width = "100%"; renderResult(); } }
++function renderResult() { const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]); const [topKey] = sorted[0]; const top = archetypes[topKey]; document.querySelector("#result-name").textContent = top[0]; document.querySelector("#result-epithet").textContent = top[1]; document.querySelector("#result-signal").textContent = top[2]; document.querySelector("#result-open").textContent = top[3]; document.querySelector("#result-script").textContent = `“${top[4]}”`; const runner = sorted[1]; document.querySelector("#runner-up").innerHTML = runner && runner[1] ? `Também apareceu bastante: <b>${archetypes[runner[0]][0]}</b> (${archetypes[runner[0]][1]}).` : ""; window.lastResult = `Meu arquétipo predominante: ${top[0]} — ${top[1]}\n\nSINAL: ${top[2]}\nABERTURA: ${top[3]}\nFECHAMENTO: ${top[4]}`; show("result"); }
+document.querySelector("#start-button").onclick = () => { current = 0; scores = Object.fromEntries(Object.keys(archetypes).map((key) => [key, 0])); show("quiz"); renderQuestion(); };
+document.querySelector("#restart-button").onclick = () => show("intro");
+document.querySelector("#copy-button").onclick = async (event) => { try { await navigator.clipboard.writeText(window.lastResult); event.currentTarget.textContent = "Copiado!"; setTimeout(() => { event.currentTarget.textContent = "Copiar resultado"; }, 1500); } catch { alert(window.lastResult); } };
