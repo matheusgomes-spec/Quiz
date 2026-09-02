@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#266EF2" />
+    <title>Quiz | Teste seus conhecimentos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html" aria-label="Quiz, início">
+          <span class="brand-mark" aria-hidden="true">?</span>
+          <span>quiz<span class="brand-dot">.</span></span>
+        </a>
+        <div class="topbar-meta">
+          <span class="eyebrow">DESAFIO RÁPIDO</span>
+          <span class="question-count" id="question-count">01 / 05</span>
+        </div>
+      </header>
+
+      <section class="quiz-layout" aria-live="polite">
+        <aside class="intro-panel">
+          <div class="intro-copy">
+            <span class="kicker">Conhecimento em movimento</span>
+            <h1>Quanto você<br /><em>realmente</em> sabe?</h1>
+            <p>Uma pergunta por vez. Respire fundo, escolha sua resposta e descubra até onde vai sua curiosidade.</p>
+          </div>
+          <div class="score-note">
+            <span class="score-icon" aria-hidden="true">✦</span>
+            <span><strong>Sem pressa.</strong><br />Você tem todo o tempo do mundo.</span>
+          </div>
+        </aside>
+
+        <section class="quiz-card" id="quiz-card">
+          <div class="progress-row">
+            <span>Progresso</span>
+            <strong id="progress-label">20% concluído</strong>
+          </div>
+          <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+
+          <div class="question-block">
+            <span class="question-tag" id="question-tag">PERGUNTA 01</span>
+            <h2 id="question-text">Qual é o maior planeta do nosso sistema solar?</h2>
+            <div class="answers" id="answers"></div>
+          </div>
+
+          <div class="card-footer">
+            <span class="hint" id="hint">Selecione uma alternativa para continuar</span>
+            <button class="next-button" id="next-button" type="button" disabled>
+              <span id="next-label">Próxima</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
